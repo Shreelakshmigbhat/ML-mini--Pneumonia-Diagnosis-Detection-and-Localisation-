@@ -57,8 +57,8 @@ Quantitatively assess localization quality against the available RSNA boxes, rep
 
 1. **Project and dataset audit — complete.** Counts, labels, box multiplicity, image encoding, and repository ignore rules recorded.
 2. **Metadata generation — complete.** `scripts/create_metadata.py` generates one row per usable image, excludes all non-Pneumonia/non-Normal classes, and preserves multiple boxes as aligned JSON coordinate arrays. The output remains smaller than the reference cohort; see `metadata/DATASET_STATS.md`.
-3. **Reference protocol review.** Extract the paper's precise cohort definition and experimental details; resolve differences before implementation.
-4. **Cohort and split specification.** Define label mapping, exclusions, ID-level grouping, and reproducible split counts.
+3. **Fixed data split — complete.** `scripts/create_split.py` writes the single seed-42, label-stratified 70% / 20% / 10% image-ID assignment to `metadata/split_metadata.csv`; see `metadata/SPLIT_STATS.md`.
+4. **Reference protocol review.** Extract the paper's precise cohort definition and experimental details; resolve differences before implementation.
 5. **Reproduction implementation and evaluation.** Build the baseline and compare results to the paper. No training has been performed in these completed stages.
 6. **Localization extension.** Evaluate localization with the selected box/point metrics and compare to the baseline.
 7. **Results and documentation.** Record reproducibility details, limitations, and paper-to-project comparisons.
