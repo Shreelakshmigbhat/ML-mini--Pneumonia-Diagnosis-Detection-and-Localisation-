@@ -1,0 +1,194 @@
+{
+  "model": "linear support vector machine",
+  "created_at_utc": "2026-10-07T15:18:27.839222+00:00",
+  "dataset": {
+    "split_metadata": "metadata/split_metadata.csv",
+    "split_metadata_sha256": "87e9ffeb7718ada206f75b00e773c915f02f3298d04a34872fef1f10ec844000",
+    "input_split_counts": {
+      "train": 10405,
+      "validation": 2972,
+      "test": 1486
+    },
+    "label_mapping": {
+      "0": "Healthy/Normal",
+      "1": "Pneumonia/Lung Opacity"
+    },
+    "feature_representation": "flattened normalized grayscale pixels",
+    "feature_shape_per_image": [
+      128,
+      128
+    ],
+    "feature_count": 16384,
+    "normalization": {
+      "method": "training-split global pixel mean and standard deviation",
+      "stats_path": "metadata/preprocessing_stats.json",
+      "mean": 0.48986453933335683,
+      "std": 0.24652535985424695,
+      "source_split": "train",
+      "fit_image_count": 10405
+    }
+  },
+  "configuration": {
+    "kernel": "linear",
+    "c": 1.0,
+    "max_iterations": 100,
+    "tolerance": 1e-05,
+    "validation_interval": 5,
+    "line_search_max_steps": 30,
+    "history_size": 10,
+    "armijo_constant": 0.0001,
+    "loss": "squared hinge",
+    "objective": "0.5 * ||weights||^2 + C * mean(max(0, 1 - y_signed * decision_function)^2)",
+    "optimizer": "NumPy L-BFGS with Armijo backtracking",
+    "fit_intercept": true,
+    "class_weight": null,
+    "model_selection": "best validation accuracy at configured checkpoints",
+    "selection_iteration": 30,
+    "evaluation_protocol": {
+      "fit_split": "train",
+      "model_selection_split": "validation",
+      "final_evaluation_split": "test (evaluated once after model selection)"
+    },
+    "reference_hyperparameters_specified": false,
+    "configuration_note": "The supplied reference description does not specify SVM kernel or hyperparameters. A linear kernel and C=1.0 were selected for the flattened-pixel baseline. The linear squared-hinge primal objective and optimization settings are recorded here."
+  },
+  "metrics": {
+    "train_accuracy": 0.8586256607400289,
+    "validation_accuracy": 0.8529609690444145,
+    "test_accuracy": 0.8358008075370121,
+    "train_accuracy_percent": 85.86256607400288,
+    "validation_accuracy_percent": 85.29609690444146,
+    "test_accuracy_percent": 83.58008075370121
+  },
+  "counts": {
+    "train": {
+      "total": 10405,
+      "healthy": 6196,
+      "pneumonia": 4209
+    },
+    "validation": {
+      "total": 2972,
+      "healthy": 1770,
+      "pneumonia": 1202
+    },
+    "test": {
+      "total": 1486,
+      "healthy": 885,
+      "pneumonia": 601
+    }
+  },
+  "validation_history": [
+    {
+      "iteration": 5,
+      "accuracy": 0.8075370121130552,
+      "objective": 0.5811587128138074
+    },
+    {
+      "iteration": 10,
+      "accuracy": 0.8391655450874832,
+      "objective": 0.5186784604143196
+    },
+    {
+      "iteration": 15,
+      "accuracy": 0.848250336473755,
+      "objective": 0.4943235398274797
+    },
+    {
+      "iteration": 20,
+      "accuracy": 0.8458950201884253,
+      "objective": 0.4814250982853835
+    },
+    {
+      "iteration": 25,
+      "accuracy": 0.847913862718708,
+      "objective": 0.4710802919508198
+    },
+    {
+      "iteration": 30,
+      "accuracy": 0.8529609690444145,
+      "objective": 0.4639912120971621
+    },
+    {
+      "iteration": 35,
+      "accuracy": 0.8492597577388964,
+      "objective": 0.4586849277312423
+    },
+    {
+      "iteration": 40,
+      "accuracy": 0.8465679676985195,
+      "objective": 0.456734822043138
+    },
+    {
+      "iteration": 45,
+      "accuracy": 0.8465679676985195,
+      "objective": 0.45450532244970443
+    },
+    {
+      "iteration": 50,
+      "accuracy": 0.8458950201884253,
+      "objective": 0.4520168905177361
+    },
+    {
+      "iteration": 55,
+      "accuracy": 0.847913862718708,
+      "objective": 0.4511555156696082
+    },
+    {
+      "iteration": 60,
+      "accuracy": 0.8462314939434724,
+      "objective": 0.44987222985774233
+    },
+    {
+      "iteration": 65,
+      "accuracy": 0.8445491251682369,
+      "objective": 0.44872129444057796
+    },
+    {
+      "iteration": 70,
+      "accuracy": 0.8472409152086138,
+      "objective": 0.44799123926153883
+    },
+    {
+      "iteration": 75,
+      "accuracy": 0.844885598923284,
+      "objective": 0.44731688675604225
+    },
+    {
+      "iteration": 80,
+      "accuracy": 0.844885598923284,
+      "objective": 0.4467835093473648
+    },
+    {
+      "iteration": 85,
+      "accuracy": 0.844885598923284,
+      "objective": 0.4463489649119926
+    },
+    {
+      "iteration": 90,
+      "accuracy": 0.844885598923284,
+      "objective": 0.4460717626082408
+    },
+    {
+      "iteration": 95,
+      "accuracy": 0.8469044414535666,
+      "objective": 0.445928825575759
+    },
+    {
+      "iteration": 100,
+      "accuracy": 0.848250336473755,
+      "objective": 0.44573280224955286
+    }
+  ],
+  "reference_result": {
+    "train_accuracy": 0.7417,
+    "train_accuracy_percent": 74.17,
+    "test_accuracy": 0.5818,
+    "test_accuracy_percent": 58.18
+  },
+  "reference_cohort_match": false,
+  "model_parameters_path": "results/svm_model.npz",
+  "software": {
+    "python": "3.14.4",
+    "numpy": "2.5.3"
+  }
+}

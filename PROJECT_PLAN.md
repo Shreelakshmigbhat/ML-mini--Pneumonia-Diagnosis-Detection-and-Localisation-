@@ -59,10 +59,11 @@ Quantitatively assess localization quality against the available RSNA boxes, rep
 2. **Metadata generation — complete.** `scripts/create_metadata.py` generates one row per usable image, excludes all non-Pneumonia/non-Normal classes, and preserves multiple boxes as aligned JSON coordinate arrays. The output remains smaller than the reference cohort; see `metadata/DATASET_STATS.md`.
 3. **Fixed data split — complete.** `scripts/create_split.py` writes the single seed-42, label-stratified 70% / 20% / 10% image-ID assignment to `metadata/split_metadata.csv`; see `metadata/SPLIT_STATS.md`.
 4. **Logistic Regression baseline — complete.** Trained L2-regularized binary logistic regression on normalized 128 × 128 flattened pixels using the fixed split; validation accuracy selected the saved iteration and test data was evaluated only afterward. Metrics, configuration, and learned parameters are in `results/logistic_regression.json` and `results/logistic_regression_model.npz`. scikit-learn could not load because Windows Application Control blocked a SciPy DLL, so the same logistic objective was optimized with the NumPy L-BFGS implementation.
-5. **Reference protocol review.** Extract the paper's precise cohort definition and experimental details; resolve differences before additional model implementation.
-6. **Reproduction implementation and evaluation.** Implement the remaining baseline and compare results to the paper.
-7. **Localization extension.** Evaluate localization with the selected box/point metrics and compare to the baseline.
-8. **Results and documentation.** Record reproducibility details, limitations, and paper-to-project comparisons.
+5. **SVM baseline — complete.** `scripts/train_svm.py` uses the same fixed split, train-fitted normalization, flattened 128 × 128 pixel features, and labels as Logistic Regression. The supplied reference details do not specify an SVM kernel or hyperparameters; the implemented linear squared-hinge SVM uses `C=1.0`, with its configuration, validation-selected iteration, metrics, and learned weights recorded in `results/svm.json` and `results/svm_model.npz`. `results/classification_results.csv` contains both baseline rows.
+6. **Reference protocol review.** Extract the paper's precise cohort definition and experimental details; resolve differences before additional model implementation.
+7. **Reproduction implementation and evaluation.** Implement the remaining baseline and compare results to the paper.
+8. **Localization extension.** Evaluate localization with the selected box/point metrics and compare to the baseline.
+9. **Results and documentation.** Record reproducibility details, limitations, and paper-to-project comparisons.
 
 ## Dataset discrepancy to resolve
 
