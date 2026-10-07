@@ -1,0 +1,11 @@
+{
+  "mean": 0.48986453933335683,
+  "std": 0.24652535985424695,
+  "pixel_scale": 1.0,
+  "image_size": [
+    128,
+    128
+  ],
+  "source_split": "train",
+  "fit_image_count": 10405
+}

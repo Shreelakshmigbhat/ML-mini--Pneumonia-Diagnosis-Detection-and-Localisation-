@@ -1,0 +1,189 @@
+{
+  "model": "binary logistic regression",
+  "created_at_utc": "2026-10-07T15:06:47.073326+00:00",
+  "dataset": {
+    "split_metadata": "metadata/split_metadata.csv",
+    "split_metadata_sha256": "87e9ffeb7718ada206f75b00e773c915f02f3298d04a34872fef1f10ec844000",
+    "input_split_counts": {
+      "train": 10405,
+      "validation": 2972,
+      "test": 1486
+    },
+    "label_mapping": {
+      "0": "Healthy/Normal",
+      "1": "Pneumonia/Lung Opacity"
+    },
+    "feature_representation": "flattened normalized grayscale pixels",
+    "feature_shape_per_image": [
+      128,
+      128
+    ],
+    "feature_count": 16384,
+    "normalization": {
+      "method": "training-split global pixel mean and standard deviation",
+      "stats_path": "metadata/preprocessing_stats.json",
+      "mean": 0.48986453933335683,
+      "std": 0.24652535985424695,
+      "source_split": "train",
+      "fit_image_count": 10405
+    }
+  },
+  "configuration": {
+    "l2_strength": 0.0001,
+    "max_iterations": 100,
+    "tolerance": 1e-05,
+    "validation_interval": 5,
+    "line_search_max_steps": 30,
+    "history_size": 10,
+    "armijo_constant": 0.0001,
+    "optimizer": "NumPy L-BFGS with Armijo backtracking",
+    "model_selection": "best validation accuracy at configured checkpoints",
+    "selection_iteration": 30,
+    "evaluation_protocol": {
+      "fit_split": "train",
+      "model_selection_split": "validation",
+      "final_evaluation_split": "test (evaluated once after model selection)"
+    }
+  },
+  "metrics": {
+    "train_accuracy": 0.8587217683805862,
+    "train_accuracy_percent": 85.87217683805862,
+    "validation_accuracy": 0.8502691790040376,
+    "validation_accuracy_percent": 85.02691790040376,
+    "test_accuracy": 0.8324360699865411,
+    "test_accuracy_percent": 83.2436069986541
+  },
+  "counts": {
+    "train": {
+      "total": 10405,
+      "healthy": 6196,
+      "pneumonia": 4209
+    },
+    "validation": {
+      "total": 2972,
+      "healthy": 1770,
+      "pneumonia": 1202
+    },
+    "test": {
+      "total": 1486,
+      "healthy": 885,
+      "pneumonia": 601
+    }
+  },
+  "validation_history": [
+    {
+      "iteration": 5,
+      "accuracy": 0.8112382234185733,
+      "objective": 0.43580490968396673
+    },
+    {
+      "iteration": 10,
+      "accuracy": 0.8391655450874832,
+      "objective": 0.39143956974838556
+    },
+    {
+      "iteration": 15,
+      "accuracy": 0.8445491251682369,
+      "objective": 0.3744353941813888
+    },
+    {
+      "iteration": 20,
+      "accuracy": 0.8455585464333782,
+      "objective": 0.36900612123611143
+    },
+    {
+      "iteration": 25,
+      "accuracy": 0.8485868102288021,
+      "objective": 0.36125847647412995
+    },
+    {
+      "iteration": 30,
+      "accuracy": 0.8502691790040376,
+      "objective": 0.3558670041077525
+    },
+    {
+      "iteration": 35,
+      "accuracy": 0.844885598923284,
+      "objective": 0.3485351458979923
+    },
+    {
+      "iteration": 40,
+      "accuracy": 0.8485868102288021,
+      "objective": 0.34271994368874964
+    },
+    {
+      "iteration": 45,
+      "accuracy": 0.8432032301480484,
+      "objective": 0.3362460984838724
+    },
+    {
+      "iteration": 50,
+      "accuracy": 0.8432032301480484,
+      "objective": 0.33408512631394016
+    },
+    {
+      "iteration": 55,
+      "accuracy": 0.8405114401076716,
+      "objective": 0.3276346190069625
+    },
+    {
+      "iteration": 60,
+      "accuracy": 0.8388290713324361,
+      "objective": 0.32415600184034404
+    },
+    {
+      "iteration": 65,
+      "accuracy": 0.8364737550471063,
+      "objective": 0.31962832211030606
+    },
+    {
+      "iteration": 70,
+      "accuracy": 0.8361372812920592,
+      "objective": 0.3124644900212496
+    },
+    {
+      "iteration": 75,
+      "accuracy": 0.8337819650067295,
+      "objective": 0.31007942529982807
+    },
+    {
+      "iteration": 80,
+      "accuracy": 0.8361372812920592,
+      "objective": 0.30373293883735847
+    },
+    {
+      "iteration": 85,
+      "accuracy": 0.8378196500672948,
+      "objective": 0.298019623879661
+    },
+    {
+      "iteration": 90,
+      "accuracy": 0.832099596231494,
+      "objective": 0.29140970382965337
+    },
+    {
+      "iteration": 95,
+      "accuracy": 0.8317631224764468,
+      "objective": 0.28752438615762466
+    },
+    {
+      "iteration": 100,
+      "accuracy": 0.8331090174966352,
+      "objective": 0.2846305344842
+    }
+  ],
+  "reference_result_percent": {
+    "train": 75.86,
+    "test": 73.02
+  },
+  "reference_cohort_match": false,
+  "computational_modification": {
+    "required": true,
+    "details": "scikit-learn LogisticRegression could not be imported because Windows Application Control blocked a SciPy DLL. The same L2-regularized binary logistic objective was optimized with a deterministic NumPy L-BFGS implementation instead; no features, splits, or evaluation roles were changed."
+  },
+  "model_parameters_path": "results/logistic_regression_model.npz",
+  "software": {
+    "python": "3.14.4",
+    "numpy": "2.5.3"
+  }
+}
