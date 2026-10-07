@@ -1,0 +1,5 @@
+numpy>=2.1
+pydicom>=3.0
+Pillow>=11.0
+pylibjpeg>=2.0
+pylibjpeg-libjpeg>=2.3
