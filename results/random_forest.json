@@ -1,0 +1,88 @@
+{
+  "model": "random forest classifier",
+  "created_at_utc": "2026-10-07T15:47:23.841407+00:00",
+  "dataset": {
+    "split_metadata": "metadata/split_metadata.csv",
+    "split_metadata_sha256": "87e9ffeb7718ada206f75b00e773c915f02f3298d04a34872fef1f10ec844000",
+    "input_split_counts": {
+      "train": 10405,
+      "validation": 2972,
+      "test": 1486
+    },
+    "label_mapping": {
+      "0": "Healthy/Normal",
+      "1": "Pneumonia/Lung Opacity"
+    },
+    "feature_representation": "flattened normalized grayscale pixels",
+    "feature_shape_per_image": [
+      128,
+      128
+    ],
+    "feature_count": 16384,
+    "normalization": {
+      "method": "training-split global pixel mean and standard deviation",
+      "stats_path": "metadata/preprocessing_stats.json",
+      "mean": 0.48986453933335683,
+      "std": 0.24652535985424695,
+      "source_split": "train",
+      "fit_image_count": 10405
+    }
+  },
+  "configuration": {
+    "n_estimators": 100,
+    "criterion": "gini",
+    "max_depth": 20,
+    "max_features": "sqrt",
+    "min_samples_leaf": 2,
+    "bootstrap": true,
+    "class_weight": null,
+    "random_state": 42,
+    "n_jobs": -1,
+    "model_selection": "No hyperparameter/model selection; validation used for evaluation only",
+    "evaluation_protocol": {
+      "fit_split": "train",
+      "validation_split": "validation (evaluation only)",
+      "final_evaluation_split": "test (after fitting)"
+    },
+    "reference_hyperparameters_specified": false,
+    "configuration_note": "The supplied reference description reports Random Forest accuracies but does not specify hyperparameters. We use 100 trees, Gini impurity, sqrt feature subsampling, maximum depth 20, and minimum leaf size 2 as a deterministic, bounded-depth baseline for the high-dimensional flattened pixels. No validation-based parameter search was performed."
+  },
+  "metrics": {
+    "train_accuracy": 0.9878904372897646,
+    "validation_accuracy": 0.8778600269179004,
+    "test_accuracy": 0.8714670255720054,
+    "train_accuracy_percent": 98.78904372897645,
+    "validation_accuracy_percent": 87.78600269179005,
+    "test_accuracy_percent": 87.14670255720054
+  },
+  "counts": {
+    "train": {
+      "total": 10405,
+      "healthy": 6196,
+      "pneumonia": 4209
+    },
+    "validation": {
+      "total": 2972,
+      "healthy": 1770,
+      "pneumonia": 1202
+    },
+    "test": {
+      "total": 1486,
+      "healthy": 885,
+      "pneumonia": 601
+    }
+  },
+  "reference_result": {
+    "train_accuracy": 0.8639,
+    "train_accuracy_percent": 86.39,
+    "test_accuracy": 0.83,
+    "test_accuracy_percent": 83.0
+  },
+  "reference_cohort_match": false,
+  "model_parameters_path": "results/random_forest_model.joblib",
+  "software": {
+    "python": "3.14.4",
+    "numpy": "2.5.3",
+    "scikit_learn": "1.9.1"
+  }
+}
