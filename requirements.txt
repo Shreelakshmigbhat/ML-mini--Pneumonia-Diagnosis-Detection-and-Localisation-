@@ -6,3 +6,4 @@ scikit-learn>=1.5
 ipykernel>=6.29
 ipython>=8.0
 torch>=2.6
+xgboost>=2.1

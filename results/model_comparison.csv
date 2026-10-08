@@ -1,0 +1,6 @@
+model,feature_representation,test_accuracy,test_f1,test_precision,test_recall
+Logistic Regression,"Flattened normalized pixels (16,384)",0.8324360700,0.7840416305,0.8188405797,0.7520798669
+SVM,"Flattened normalized pixels (16,384)",0.8358008075,0.7892918826,0.8204667864,0.7603993344
+Random Forest,"Flattened normalized pixels (16,384)",0.8714670256,0.8334786399,0.8754578755,0.7953410982
+CNN,Learned 10-layer CNN features (128x128 input),0.8802153432,0.8387681159,0.9204771372,0.7703826955
+XGBoost,PCA (256 components) of flattened normalized pixels,0.8337819650,0.7842794760,0.8253676471,0.7470881864
