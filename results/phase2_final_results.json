@@ -1,0 +1,63 @@
+{
+  "reference_paper": {
+    "method": "CNN + CAM",
+    "mean_iou": 0.1508,
+    "other_metrics": null,
+    "other_metrics_note": "The supplied paper reference provides mean IoU only; median IoU and overlap percentages are not reported here."
+  },
+  "phase1": {
+    "method": "Stage 8 CNN + classifier-weighted CAM + DFS clustering",
+    "test_sample_count": 601,
+    "mean_iou": 0.0800870586462174,
+    "median_iou": 0.0626046631456911,
+    "percentage_iou_gt_0": 80.69883527454242,
+    "percentage_iou_ge_0_5": 0.33277870216306155,
+    "source": "results/cam_results.json"
+  },
+  "phase2": {
+    "method": "Frozen Stage 8 CNN + Grad-CAM++ + Phase 1 box post-processing",
+    "test_sample_count": 601,
+    "mean_iou": 0.0902771327302728,
+    "median_iou": 0.06826838693784545,
+    "percentage_iou_gt_0": 90.18302828618968,
+    "percentage_iou_ge_0_5": 0.33277870216306155,
+    "source": "results/phase2_improved_cam_results.json"
+  },
+  "improvement_over_phase1": {
+    "mean_iou": {
+      "absolute": 0.010190074084055395,
+      "relative_percent": 12.723746203578026
+    },
+    "median_iou": {
+      "absolute": 0.0056637237921543515,
+      "relative_percent": 9.046808188990998
+    },
+    "percentage_iou_gt_0": {
+      "absolute_percentage_points": 9.484193011647264,
+      "relative_percent": 11.7525773195876
+    },
+    "percentage_iou_ge_0_5": {
+      "absolute_percentage_points": 0.0,
+      "relative_percent": 0.0
+    }
+  },
+  "reference_comparison": {
+    "phase1_mean_iou_minus_reference": -0.07071294135378261,
+    "phase2_mean_iou_minus_reference": -0.0605228672697272,
+    "phase2_closes_reference_gap_by": 0.010190074084055395,
+    "phase2_reproduces_reference": false
+  },
+  "ablation_summary": {
+    "source": "results/phase2_ablation_summary.json",
+    "best_configuration": "Phase 2 Full Method",
+    "baseline_configuration": "Phase 1 Baseline",
+    "primary_component": "Grad-CAM++ map generation",
+    "removing_primary_component_reduces_mean_iou": true,
+    "full_method_outperforms_baseline_mean_iou": true,
+    "improvement_consistent_across_all_metrics": false,
+    "interpretation": "Mean IoU, median IoU, and IoU > 0 improve over the baseline; IoU >= 0.5 is unchanged. The removed-component row is algorithmically the Phase 1 baseline because Grad-CAM++ map generation was the sole Stage 13 change."
+  },
+  "conclusion": "On the same 601-image test set, Phase 2 demonstrates a measurable aggregate improvement over the implemented Phase 1 CAM baseline. It does not reach the reference paper's mean IoU of 0.1508, and the high-overlap rate (IoU >= 0.5) is unchanged.",
+  "phase1_results_modified": false,
+  "experiments_rerun": false
+}

@@ -7,3 +7,5 @@ ipykernel>=6.29
 ipython>=8.0
 torch>=2.6
 xgboost>=2.1
+joblib>=1.4
+threadpoolctl>=3.5

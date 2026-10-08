@@ -1,4 +1,7 @@
 Data/
+.env
+.env.*
+!.env.example
 *.dcm
 *.pth
 *.pt
