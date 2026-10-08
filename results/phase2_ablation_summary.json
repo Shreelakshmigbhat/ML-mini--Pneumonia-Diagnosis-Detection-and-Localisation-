@@ -1,0 +1,73 @@
+{
+  "stage": 14,
+  "evaluation": {
+    "test_sample_count": 601,
+    "split": "existing fixed test split; Pneumonia-positive images",
+    "checkpoint_sha256": "75ae304214bbea8d9d8ec3857904419c4215d564ab6e50fc84f5ccd2b4c8833f",
+    "preprocessing": "Existing Stage 8 train-fitted statistics; 128x128",
+    "iou_matching": "descending-IoU greedy one-to-one box matching; image IoU is matched IoU sum divided by max(predicted box count, ground-truth box count), with unmatched boxes contributing zero",
+    "ground_truth_used_for_prediction_or_configuration": false,
+    "new_localization_runs_performed": 0,
+    "reuse_note": "The baseline is the saved Stage 9 result. Removing the sole Stage 13 change (Grad-CAM++ map generation) exactly restores the baseline algorithm, so the ablation has identical metrics. The Stage 13 full-method result was also reused; no duplicate 601-image evaluation was run."
+  },
+  "configurations": [
+    {
+      "name": "Phase 1 Baseline",
+      "map_generation": "Classifier-weighted ReLU CAM",
+      "changed_component": "None; official baseline",
+      "post_processing": "Threshold 0.50 inclusive; 8-connected DFS; enabled two-sigma cluster-size filter; original-DICOM box scaling",
+      "metrics": {
+        "mean_iou": 0.0800870586462174,
+        "median_iou": 0.0626046631456911,
+        "iou_gt_0": 80.69883527454242,
+        "iou_ge_0_5": 0.33277870216306155
+      },
+      "source": "results/cam_results.json",
+      "interpretation": "Official Phase 1 control; saved result reused."
+    },
+    {
+      "name": "Ablation: Grad-CAM++ removed",
+      "map_generation": "Classifier-weighted ReLU CAM",
+      "changed_component": "Grad-CAM++ map generation removed; all Stage 13 post-processing and evaluation settings retained",
+      "post_processing": "Threshold 0.50 inclusive; 8-connected DFS; enabled two-sigma cluster-size filter; original-DICOM box scaling",
+      "metrics": {
+        "mean_iou": 0.0800870586462174,
+        "median_iou": 0.0626046631456911,
+        "iou_gt_0": 80.69883527454242,
+        "iou_ge_0_5": 0.33277870216306155
+      },
+      "source": "results/cam_results.json",
+      "interpretation": "Algorithmically identical to Phase 1 Baseline because map generation is Stage 13's only changed component."
+    },
+    {
+      "name": "Phase 2 Full Method",
+      "map_generation": "Grad-CAM++ class-1 map",
+      "changed_component": "Grad-CAM++ map generation enabled",
+      "post_processing": "Threshold 0.50 inclusive; 8-connected DFS; enabled two-sigma cluster-size filter; original-DICOM box scaling",
+      "metrics": {
+        "mean_iou": 0.0902771327302728,
+        "median_iou": 0.06826838693784545,
+        "iou_gt_0": 90.18302828618968,
+        "iou_ge_0_5": 0.33277870216306155
+      },
+      "source": "results/phase2_improved_cam_results.json",
+      "interpretation": "Stage 13 full-method test result reused."
+    }
+  ],
+  "baseline_configuration": "Phase 1 Baseline",
+  "best_configuration": "Phase 2 Full Method",
+  "improvement_over_baseline": {
+    "mean_iou_absolute": 0.010190074084055395,
+    "mean_iou_relative_percent": 12.723746203578026,
+    "median_iou_absolute": 0.0056637237921543515,
+    "iou_gt_0_percentage_points": 9.484193011647264,
+    "iou_ge_0_5_percentage_points": 0.0
+  },
+  "interpretation": {
+    "primary_component": "Grad-CAM++ map generation",
+    "removing_primary_component_reduces_mean_iou": true,
+    "full_method_outperforms_baseline_mean_iou": true,
+    "improvement_consistent_across_all_metrics": false,
+    "conclusion": "The controlled results associate the mean, median, and any-overlap gains with Grad-CAM++ map generation; the IoU >= 0.5 rate is unchanged, so the improvement is not consistent across all metrics."
+  }
+}
