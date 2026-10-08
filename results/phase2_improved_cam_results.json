@@ -1,0 +1,93 @@
+{
+  "method_name": "Stage 13 Grad-CAM++ Localization",
+  "baseline_method": "Stage 8 custom CNN + CAM + DFS clustering",
+  "new_method": "Frozen Stage 8 CNN with Grad-CAM++ class-1 map and existing box post-processing",
+  "parameters": {
+    "class_index": 1,
+    "threshold": 0.5,
+    "threshold_rule": "normalized Grad-CAM++ >= threshold (inclusive)",
+    "apply_two_sigma_filter": true,
+    "two_sigma_filter_rule": "retain per-image 8-connected clusters within mean +/- 2 population standard deviations of activated-pixel count",
+    "connectivity": 8,
+    "batch_size": 16,
+    "input_size": [
+      128,
+      128
+    ],
+    "cam_output_size": [
+      128,
+      128
+    ],
+    "epsilon": 1e-08,
+    "smoke_sample_count": 12,
+    "qualitative_example_count": 10
+  },
+  "test_sample_count": 601,
+  "mean_iou": 0.0902771327302728,
+  "median_iou": 0.06826838693784545,
+  "percentage_iou_gt_0": 90.18302828618968,
+  "percentage_iou_ge_0_5": 0.33277870216306155,
+  "baseline_mean_iou": 0.0800870586462174,
+  "baseline_metrics": {
+    "mean_iou": 0.0800870586462174,
+    "median_iou": 0.0626046631456911,
+    "percentage_iou_gt_0": 80.69883527454242,
+    "percentage_iou_ge_0_5": 0.33277870216306155
+  },
+  "absolute_improvement": 0.010190074084055395,
+  "relative_improvement_percent": 12.723746203578026,
+  "improved_over_baseline": true,
+  "stage12_dominant_failure_mode": "Spatial imprecision: diffuse/misplaced activations and oversized predicted boxes.",
+  "checkpoint": {
+    "checkpoint_path": "models/cnn_best.pth",
+    "checkpoint_sha256": "75ae304214bbea8d9d8ec3857904419c4215d564ab6e50fc84f5ccd2b4c8833f",
+    "checkpoint_epoch": 9,
+    "parameter_count": 757154,
+    "architecture": {
+      "input_channels": 1,
+      "input_size": [
+        128,
+        128
+      ],
+      "channels": [
+        32,
+        32,
+        64,
+        64,
+        96,
+        96,
+        128,
+        128,
+        128,
+        128
+      ],
+      "num_classes": 2,
+      "kernel_size": 3,
+      "padding": 1,
+      "activation": "ReLU",
+      "pooling": "2x2 max pooling after convolutional layers 2, 4, 6, and 8",
+      "global_pooling": "Adaptive Average Pooling to 1x1",
+      "classifier": "one linear layer"
+    },
+    "cam_compatibility": {
+      "convolution_count": 10,
+      "final_feature_map_shape": [
+        128,
+        8,
+        8
+      ],
+      "classifier_weight_shape": [
+        2,
+        128
+      ],
+      "fully_connected_layer_count": 1,
+      "cam_compatible": true
+    },
+    "split_metadata_sha256": "87e9ffeb7718ada206f75b00e773c915f02f3298d04a34872fef1f10ec844000"
+  },
+  "split": "existing fixed test split; 601 Pneumonia-positive images",
+  "evaluation_strategy": "descending-IoU greedy one-to-one box matching; image IoU is matched IoU sum divided by max(predicted box count, ground-truth box count), with unmatched boxes contributing zero",
+  "ground_truth_used_for_generation_or_processing": false,
+  "visual_example_index": "results/phase2_improved_examples/examples.csv",
+  "phase1_results_modified": false
+}
