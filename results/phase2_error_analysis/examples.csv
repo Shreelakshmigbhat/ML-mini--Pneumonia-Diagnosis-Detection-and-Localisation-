@@ -1,0 +1,13 @@
+image_id,case_types,iou,predicted_box_count,ground_truth_box_count,predicted_area_fraction,visualization
+aa720b92-39d2-4db4-a6c1-318840cb973b,good_localization,0.7735194339439759,1,1,0.1871337890625,results/phase2_error_analysis/01_aa720b92-39d2-4db4-a6c1-318840cb973b_iou_0.7735.png
+805f684c-7781-45ba-83db-4ae332bd2cd7,partial_localization,0.2540523690773067,1,1,0.2197265625,results/phase2_error_analysis/02_805f684c-7781-45ba-83db-4ae332bd2cd7_iou_0.2541.png
+77a4a76f-d348-4dd4-b22a-d7b676121d78,large_false_positive_region,0.0,1,1,0.3646240234375,results/phase2_error_analysis/03_77a4a76f-d348-4dd4-b22a-d7b676121d78_iou_0.0000.png
+1caf3708-4998-4594-bf7f-ea4beb24b6f5,very_small_predicted_region,0.0,1,1,0.015625,results/phase2_error_analysis/04_1caf3708-4998-4594-bf7f-ea4beb24b6f5_iou_0.0000.png
+3d963020-db86-43c6-8133-21c69cb65df0,multiple_disconnected_regions,0.0,3,2,0.21588134765625,results/phase2_error_analysis/05_3d963020-db86-43c6-8133-21c69cb65df0_iou_0.0000.png
+d77b519d-abb7-49d7-8bec-dedebe8f50d1,irrelevant_anatomical_activation,0.0,2,1,0.01806640625,results/phase2_error_analysis/06_d77b519d-abb7-49d7-8bec-dedebe8f50d1_iou_0.0000.png
+c75ada7c-f5f2-4ea0-9876-05d332328e67,no_useful_activation_no_predicted_box,0.0,0,1,0.0,results/phase2_error_analysis/07_c75ada7c-f5f2-4ea0-9876-05d332328e67_iou_0.0000.png
+57efac0d-fe0d-4fd1-a986-8642a0a0fe6a,ground_truth_region_missed,0.0,1,2,0.0205078125,results/phase2_error_analysis/08_57efac0d-fe0d-4fd1-a986-8642a0a0fe6a_iou_0.0000.png
+a5df1553-7c85-46e6-9e0b-870d67d23eb7,additional_score_quantile_0.2,0.0012242433266330826,1,1,0.0701904296875,results/phase2_error_analysis/09_a5df1553-7c85-46e6-9e0b-870d67d23eb7_iou_0.0012.png
+6135977c-f19e-4a7f-9e11-6fe03805e750,additional_score_quantile_0.4,0.04640888391787169,1,2,0.3570556640625,results/phase2_error_analysis/10_6135977c-f19e-4a7f-9e11-6fe03805e750_iou_0.0464.png
+c422054e-4ce3-46ff-a45c-1a6c243236c7,additional_score_quantile_0.6,0.07646579929647777,1,2,0.2001953125,results/phase2_error_analysis/11_c422054e-4ce3-46ff-a45c-1a6c243236c7_iou_0.0765.png
+16f07d74-df3a-4436-86bd-31041b0af6c3,additional_score_quantile_0.8,0.1314397124054156,1,2,0.220458984375,results/phase2_error_analysis/12_16f07d74-df3a-4436-86bd-31041b0af6c3_iou_0.1314.png

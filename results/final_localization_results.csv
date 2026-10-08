@@ -1,0 +1,3 @@
+Method,Dataset Split,Mean IoU,Median IoU,IoU > 0 (%),IoU >= 0.5 (%),Reference/Our Result
+CNN + CAM,Test,0.1508,N/A,N/A,N/A,Reference paper reported test IoU
+CNN + CAM,Test,0.0800870586,0.0626046631,80.6988352745,0.3327787022,Our result from results/cam_results.json (601 positive test images)

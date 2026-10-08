@@ -1,0 +1,45 @@
+{
+  "dataset_split": "fixed test split, Pneumonia-positive images only",
+  "num_images": 601,
+  "threshold": 0.5,
+  "baseline_result_file": "results/cam_results.json",
+  "checkpoint_sha256": "75ae304214bbea8d9d8ec3857904419c4215d564ab6e50fc84f5ccd2b4c8833f",
+  "predicted_box_count_distribution": {
+    "no_box": {
+      "count": 1,
+      "percentage": 0.16638935108153077
+    },
+    "one_box": {
+      "count": 542,
+      "percentage": 90.18302828618968
+    },
+    "multiple_boxes": {
+      "count": 58,
+      "percentage": 9.650582362728786
+    }
+  },
+  "predicted_box_area_pixels_squared": {
+    "definition": "Across all retained predicted boxes at the original DICOM resolution",
+    "count": 659,
+    "mean": 159239.8664643399,
+    "median": 150144.0
+  },
+  "ground_truth_box_area_pixels_squared": {
+    "definition": "Across all positive RSNA ground-truth boxes at the original DICOM resolution",
+    "count": 946,
+    "mean": 77971.05708245243,
+    "median": 62553.0
+  },
+  "predicted_to_ground_truth_area_ratio": {
+    "definition": "Per-image total predicted box area divided by total ground-truth box area; includes images with no predicted boxes",
+    "mean": 2.5790480181851017,
+    "median": 1.7031854539622717,
+    "ratio_of_total_areas": 1.4226978027028514
+  },
+  "selected_example_count": 12,
+  "example_index": "results/phase2_error_analysis/examples.csv",
+  "phase1_cam_results_modified": false,
+  "failure_categories": {
+    "irrelevant_anatomical_activation": "The selected example's hotspot is centered below the annotated pulmonary opacity, in lower central/diaphragmatic anatomy."
+  }
+}
