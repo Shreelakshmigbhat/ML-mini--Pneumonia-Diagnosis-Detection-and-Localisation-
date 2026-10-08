@@ -162,6 +162,7 @@ Some notebooks contain training or full-test evaluation cells. Avoid executing t
 - [Phase 1 classification and localization results](./RESULTS.md)
 - [Phase 2 error analysis, improved localization, ablation, and final comparison](./PHASE2_RESULTS.md)
 - [Final project report](./FINAL_REPORT.md)
+- [Detailed project documentation and manuscript draft](./PROJECT_DOCUMENTATION.md)
 - [Project status](./PROJECT_STATUS.md)
 - [Phase 2 final localization table](./results/phase2_final_comparison.csv)
 
